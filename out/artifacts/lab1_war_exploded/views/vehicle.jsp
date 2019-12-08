@@ -43,7 +43,7 @@
                         <button onclick="location.href='/vehicles/edit?id=${vehicle.id}'">Edit</button>
                         <form method="post" action='<c:url value="/vehicles/delete" />' style="display:inline;">
                             <input type="hidden" name="id" value="${vehicle.id}">
-                            <button type="submit">Submit</button>
+                            <button type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>

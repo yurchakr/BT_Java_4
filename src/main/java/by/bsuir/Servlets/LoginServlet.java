@@ -1,5 +1,8 @@
 package by.bsuir.Servlets;
 
+import by.bsuir.autobase.dao.DaoFactory;
+import by.bsuir.autobase.entity.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +14,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        getServletContext().getRequestDispatcher("/views/login.html").forward(req, resp);
+        getServletContext().getRequestDispatcher("/views/login.jsp").forward(req, resp);
 
     }
 
@@ -19,15 +22,16 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
-            DaoFactory.getVehicleDAO().editVehicle(Integer.parseInt(req.getParameter("id")), req.getParameter("make"),
-                    req.getParameter("model"), Double.parseDouble(req.getParameter("price")),
-                    Double.parseDouble(req.getParameter("fuelConsumption")), Integer.parseInt(req.getParameter("power")),
-                    Integer.parseInt(req.getParameter("year")), FuelType.valueOf(req.getParameter("fuelType")));
-            resp.sendRedirect(req.getContextPath()+"/vehicles");
+            User user = DaoFactory.getUserDAO().getUser(req.getParameter("name"), req.getParameter("password"));
+            if(user != null) {
+                resp.sendRedirect(req.getContextPath()+"/vehicles");
+            }
+            else {
+                resp.sendRedirect(req.getContextPath()+"/login");
+            }
         }
         catch(Exception ex) {
-            System.out.println(ex);
-            getServletContext().getRequestDispatcher("/views/edit.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath()+"/login");
         }
     }
 }
