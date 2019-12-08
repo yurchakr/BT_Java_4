@@ -14,6 +14,9 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+/**
+ * The type Vehicle servlet.
+ */
 public class VehicleServlet extends HttpServlet {
 
     private static Logger log = Logger.getLogger(String.valueOf(VehicleServlet.class));

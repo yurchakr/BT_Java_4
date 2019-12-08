@@ -1,8 +1,5 @@
 package by.bsuir.autobase.dao.VehicleDao;
 
-import by.bsuir.Parsers.DOM;
-import by.bsuir.Parsers.SAX;
-import by.bsuir.Parsers.StAX;
 import by.bsuir.autobase.dao.VehicleDB;
 import by.bsuir.autobase.entity.FuelType;
 import by.bsuir.autobase.entity.Vehicle;
@@ -16,6 +13,9 @@ import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The type Vehicle dao.
+ */
 public class VehicleDAO implements IVehicleDAO {
 
     public ArrayList<Vehicle> getVehicles() {

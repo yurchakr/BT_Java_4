@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The type Delete servlet.
+ */
 public class DeleteServlet extends HttpServlet {
 
     @Override

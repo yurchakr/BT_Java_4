@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Login servlet.
+ */
 public class LoginServlet extends HttpServlet {
 
     @Override

@@ -4,12 +4,22 @@ import by.bsuir.autobase.entity.User;
 
 import java.sql.*;
 
+/**
+ * The type User db.
+ */
 public class UserDB {
 
     private static String url = "jdbc:mysql://localhost:3306/autobase?serverTimezone=Europe/Minsk&useSSL=false";
     private static String username = "root";
     private static String password = "root";
 
+    /**
+     * Select one user.
+     *
+     * @param _name     the name
+     * @param _password the password
+     * @return the user
+     */
     public static User selectOne(String _name, String _password) {
 
         User user = null;
@@ -34,6 +44,12 @@ public class UserDB {
         return user;
     }
 
+    /**
+     * Select one by name user.
+     *
+     * @param _name the name
+     * @return the user
+     */
     public static User selectOneByName(String _name) {
 
         User user = null;
@@ -57,6 +73,12 @@ public class UserDB {
         return user;
     }
 
+    /**
+     * Insert int.
+     *
+     * @param user the user
+     * @return the int
+     */
     public static int insert(User user) {
 
         try{

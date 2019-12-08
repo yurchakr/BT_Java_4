@@ -53,11 +53,13 @@
     </div>
 </div>
 
-<div>
-    <button onclick="location.href='/'">Back to main</button>
-</div>
+
 <div>
     <button onclick="location.href='/vehicles/add'">Add vehicle</button>
+</div>
+
+<div>
+    <button onclick="location.href='/'">Log out</button>
 </div>
 </body>
 </html>

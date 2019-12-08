@@ -6,13 +6,21 @@ import by.bsuir.autobase.entity.Vehicle;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * The type Vehicle db.
+ */
 public class VehicleDB {
 
         private static String url = "jdbc:mysql://localhost:3306/autobase?serverTimezone=Europe/Minsk&useSSL=false";
         private static String username = "root";
         private static String password = "root";
 
-        public static ArrayList<Vehicle> select() {
+    /**
+     * Select array list.
+     *
+     * @return the array list
+     */
+    public static ArrayList<Vehicle> select() {
 
             ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
             try{
@@ -40,7 +48,14 @@ public class VehicleDB {
             }
             return vehicles;
         }
-        public static Vehicle selectOne(int id) {
+
+    /**
+     * Select one vehicle.
+     *
+     * @param id the id
+     * @return the vehicle
+     */
+    public static Vehicle selectOne(int id) {
 
             Vehicle vehicle = null;
             try{
@@ -70,7 +85,13 @@ public class VehicleDB {
             return vehicle;
         }
 
-        public static int insert(Vehicle vehicle) {
+    /**
+     * Insert int.
+     *
+     * @param vehicle the vehicle
+     * @return the int
+     */
+    public static int insert(Vehicle vehicle) {
 
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -96,7 +117,13 @@ public class VehicleDB {
             return 0;
         }
 
-        public static int update(Vehicle vehicle) {
+    /**
+     * Update int.
+     *
+     * @param vehicle the vehicle
+     * @return the int
+     */
+    public static int update(Vehicle vehicle) {
 
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -122,7 +149,14 @@ public class VehicleDB {
             }
             return 0;
         }
-        public static int delete(int id) {
+
+    /**
+     * Delete int.
+     *
+     * @param id the id
+     * @return the int
+     */
+    public static int delete(int id) {
 
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
