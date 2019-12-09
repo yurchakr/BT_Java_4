@@ -3,12 +3,14 @@ package by.bsuir.autobase.dao;
 import by.bsuir.autobase.entity.User;
 
 import java.sql.*;
+import java.util.logging.Logger;
 
 /**
  * The type User db.
  */
 public class UserDB {
 
+    private static Logger log = Logger.getLogger(String.valueOf(UserDB.class));
     private static String url = "jdbc:mysql://localhost:3306/autobase?serverTimezone=Europe/Minsk&useSSL=false";
     private static String username = "root";
     private static String password = "root";
@@ -24,6 +26,7 @@ public class UserDB {
 
         User user = null;
         try{
+            log.info("DB selecting one routine started...");
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
 
@@ -35,11 +38,12 @@ public class UserDB {
                     if(resultSet.next()){
                         user = new User(_name, _password);
                     }
+                    log.info("Select one: Successful");
                 }
             }
         }
         catch(Exception ex){
-            System.out.println(ex);
+            log.info(ex.getMessage());
         }
         return user;
     }
@@ -54,6 +58,7 @@ public class UserDB {
 
         User user = null;
         try{
+            log.info("DB selecting one routine started...");
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
 
@@ -64,11 +69,12 @@ public class UserDB {
                     if(resultSet.next()){
                         user = new User(_name, resultSet.getString(2));
                     }
+                    log.info("Select one by name: Successful");
                 }
             }
         }
         catch(Exception ex){
-            System.out.println(ex);
+            log.info(ex.getMessage());
         }
         return user;
     }
@@ -82,6 +88,7 @@ public class UserDB {
     public static int insert(User user) {
 
         try{
+            log.info("DB inserting routine started...");
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = DriverManager.getConnection(url, username, password)){
 
@@ -90,12 +97,13 @@ public class UserDB {
                     preparedStatement.setString(1, user.getName());
                     preparedStatement.setString(2, user.getPassword());
 
+                    log.info("Insert: Successful");
                     return  preparedStatement.executeUpdate();
                 }
             }
         }
         catch(Exception ex){
-            System.out.println(ex);
+            log.info(ex.getMessage());
         }
         return 0;
     }
